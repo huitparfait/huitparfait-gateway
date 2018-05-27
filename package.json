@@ -1,0 +1,26 @@
+{
+  "name": "huitparfait-gateway",
+  "version": "0.0.1",
+  "description": "huitparfait-gateway",
+  "author": "Huit Parfait Team",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:huitparfait/huitparfait-gateway.git"
+  },
+  "scripts": {
+    "dev": "nodemon --exec babel-node --watch src --watch config src/server.js",
+    "build": "npm run clean && babel src -d dist",
+    "clean": "rm -rf dist",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "hapi": "17.5.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "nodemon": "1.17.5"
+  }
+}

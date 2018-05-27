@@ -1,0 +1,23 @@
+= huitparfait-gateway
+
+Provide authentication, and more!
+
+=== Prerequisites
+This projects uses Node.js 10.2.1, which comes with NPM v5.6.0.
+
+=== Contributing
+
+==== Run the project (dev mode)
+```
+npm run dev
+```
+
+==== build the project
+```
+npm run build
+```
+
+==== Run the project (production mode)
+```
+npm start
+```

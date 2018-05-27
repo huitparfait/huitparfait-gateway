@@ -1,0 +1,15 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+
+# Node template
+node_modules
+
+# Node build
+dist
+
+# Vi/Vim
+*.swp
+
+*.log
