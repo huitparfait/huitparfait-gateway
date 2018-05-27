@@ -8,19 +8,19 @@
     "type": "git",
     "url": "git@github.com:huitparfait/huitparfait-gateway.git"
   },
+  "engines": {
+    "node": "10.2.1"
+  },
   "scripts": {
-    "dev": "nodemon --exec babel-node --watch src --watch config src/server.js",
-    "build": "npm run clean && babel src -d dist",
-    "clean": "rm -rf dist",
-    "start": "node dist/server.js"
+    "dev": "nodemon --watch src --watch config src/server.js",
+    "start": "node src/server.js"
   },
   "dependencies": {
+    "convict": "4.2.0",
+    "h2o2": "8.1.2",
     "hapi": "17.5.0"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-polyfill": "6.26.0",
-    "babel-preset-env": "1.7.0",
     "nodemon": "1.17.5"
   }
 }
