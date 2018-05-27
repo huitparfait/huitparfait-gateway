@@ -1,8 +1,8 @@
 'use strict';
 
-import Hapi from 'hapi';
-import h2o2 from 'h2o2';
-import routes from './routes';
+const Hapi = require('hapi');
+const h2o2 = require('h2o2');
+const routes = require('./routes');
 
 const server = Hapi.server({
     port: 3000,

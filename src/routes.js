@@ -1,8 +1,8 @@
 'use strict';
 
-import config from './config/config';
+const config = require('./config/config');
 
-export default [
+module.exports = [
     {
         method: '*',
         path: '/{path*}',

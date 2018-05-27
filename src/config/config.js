@@ -1,6 +1,8 @@
-import convict from 'convict';
+'use strict';
 
-export default convict({
+const convict = require('convict');
+
+module.exports = convict({
     ENV: {
         doc: 'The application environment.',
         format: ['production', 'development', 'test'],
