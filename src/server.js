@@ -1,6 +1,8 @@
 'use strict';
 
 import Hapi from 'hapi';
+import h2o2 from 'h2o2';
+import routes from './routes';
 
 const server = Hapi.server({
     port: 3000,
@@ -8,8 +10,17 @@ const server = Hapi.server({
 });
 
 const init = async () => {
-    await server.start();
-    console.log(`Server running at: ${server.info.uri}`);
+    try {
+        await server.register({ plugin: h2o2 });
+        await server.start();
+
+        server.route(routes);
+
+        console.log(`Server running at: ${server.info.uri}`);
+    }
+    catch (e) {
+        console.log('Failed to start server', e);
+    }
 };
 
 process.on('unhandledRejection', (err) => {
