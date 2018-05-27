@@ -9,6 +9,12 @@ module.exports = convict({
         default: 'development',
         env: 'NODE_ENV',
     },
+    PORT: {
+        doc: 'The port on which the server is running',
+        format: Number,
+        default: 3000,
+        env: 'PORT',
+    },
     OUTBOUND_URL: {
         doc: 'The URL to proxify',
         format: String,

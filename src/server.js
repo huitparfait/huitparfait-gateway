@@ -3,10 +3,10 @@
 const Hapi = require('hapi');
 const h2o2 = require('h2o2');
 const routes = require('./routes');
+const config = require('./config/config');
 
 const server = Hapi.server({
-    port: 3000,
-    host: 'localhost'
+    port: config.get('PORT'),
 });
 
 const init = async () => {
