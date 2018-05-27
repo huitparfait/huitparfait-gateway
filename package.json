@@ -8,6 +8,9 @@
     "type": "git",
     "url": "git@github.com:huitparfait/huitparfait-gateway.git"
   },
+  "engines": {
+    "node": "10.2.1"
+  },
   "scripts": {
     "dev": "nodemon --watch src --watch config src/server.js",
     "start": "node src/server.js"
