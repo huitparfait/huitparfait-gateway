@@ -14,16 +14,33 @@
   "scripts": {
     "dev": "nodemon --watch src --watch config src/start-app.js",
     "start": "node src/start-app.js",
-    "e2e": "NODE_ENV=e2e jest -c ./e2e.jest.config.js"
+    "start:fake-api": "node e2e/start-fake-app.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "dependencies": {
+    "bell": "9.3.1",
+    "boom": "7.2.0",
     "convict": "4.2.0",
+    "good": "^8.1.1",
+    "good-console": "^7.1.0",
+    "good-squeeze": "^5.1.0",
     "h2o2": "8.1.2",
-    "hapi": "17.5.0"
+    "hapi": "17.5.0",
+    "hapi-require-https": "3.0.0",
+    "jsonwebtoken": "8.2.2",
+    "redis": "2.8.0",
+    "superagent": "3.8.3",
+    "uuid": "3.2.1"
   },
   "devDependencies": {
-    "jest": "23.1.0",
-    "nodemon": "1.17.5",
-    "supertest": "3.1.0"
+    "eslint": "4.19.1",
+    "eslint-config-standard": "11.0.0",
+    "eslint-plugin-import": "2.12.0",
+    "eslint-plugin-node": "6.0.1",
+    "eslint-plugin-promise": "3.8.0",
+    "eslint-plugin-sort-requires": "2.1.0",
+    "eslint-plugin-standard": "3.1.0",
+    "nodemon": "1.17.5"
   }
 }

@@ -1,0 +1,5 @@
+= session-storage
+
+Run a local redis in Docker
+
+./redis-start.sh
