@@ -2,8 +2,8 @@
 
 const convict = require('convict');
 
-module.exports = convict({
-  ENV: {
+const conf = convict({
+  NODE_ENV: {
     doc: 'The application environment.',
     format: ['production', 'development', 'test'],
     default: 'development',
@@ -15,10 +15,108 @@ module.exports = convict({
     default: 3000,
     env: 'PORT',
   },
-  OUTBOUND_URL: {
-    doc: 'The URL to proxify',
+  API_URL: {
+    doc: 'The URL of the API to proxify',
     format: String,
-    default: 'https://api.github.com',
-    env: 'OUTBOUND_URL',
+    required: true,
+    default: null,
+    env: 'API_URL',
+  },
+  FRONT_URL: {
+    doc: 'The URL of the frontend to proxify',
+    format: String,
+    required: true,
+    default: null,
+    env: 'FRONT_URL',
+  },
+  OAUTH_BELL_COOKIE_PASSWORD: {
+    doc: 'Password used by bell (and iron) to encrypt cookies during oAuth dance',
+    format: String,
+    required: true,
+    default: null,
+    env: 'OAUTH_BELL_COOKIE_PASSWORD',
+  },
+  HMAC_KEY: {
+    doc: 'Key used to hash "oAuthProvider"+"oAuthId" which is used as a unique user id',
+    format: String,
+    required: true,
+    default: null,
+    env: 'HMAC_KEY',
+  },
+  REDIS_HOST: {
+    doc: 'Host to access redis instance',
+    format: String,
+    required: true,
+    default: null,
+    env: 'REDIS_HOST',
+  },
+  REDIS_PORT: {
+    doc: 'Port to access redis instance',
+    format: Number,
+    required: true,
+    default: null,
+    env: 'REDIS_PORT',
+  },
+  REDIS_PASSWORD: {
+    doc: 'Password to access redis instance',
+    format: String,
+    required: true,
+    default: null,
+    env: 'REDIS_PASSWORD',
+  },
+  JWT_PRIVATE_KEY: {
+    doc: 'The RS512 public key to sign JWT tokens.',
+    format: String,
+    required: true,
+    default: null,
+    env: 'JWT_PRIVATE_KEY',
+  },
+  FACEBOOK_APP_ID: {
+    doc: 'Facebook oAuth: App id',
+    format: String,
+    required: true,
+    default: null,
+    env: 'FACEBOOK_APP_ID',
+  },
+  FACEBOOK_SECRET_KEY: {
+    doc: 'Facebook oAuth: Secret key',
+    format: String,
+    required: true,
+    default: null,
+    env: 'FACEBOOK_SECRET_KEY',
+  },
+  GOOGLE_CLIENT_ID: {
+    doc: 'Google oAuth: Client id',
+    format: String,
+    required: true,
+    default: null,
+    env: 'GOOGLE_CLIENT_ID',
+  },
+  GOOGLE_CLIENT_SECRET: {
+    doc: 'Google oAuth: Client secret',
+    format: String,
+    required: true,
+    default: null,
+    env: 'GOOGLE_CLIENT_SECRET',
+  },
+  TWITTER_CONSUMER_KEY: {
+    doc: 'Twitter oAuth: Consumer Key (API Key)',
+    format: String,
+    required: true,
+    default: null,
+    env: 'TWITTER_CONSUMER_KEY',
+  },
+  TWITTER_CONSUMER_SECRET: {
+    doc: 'Twitter oAuth: Consumer Secret (API Secret)',
+    format: String,
+    required: true,
+    default: null,
+    env: 'TWITTER_CONSUMER_SECRET',
   },
 });
+
+if (conf.get('NODE_ENV') === 'development') {
+  conf.loadFile('./src/config/config.dev.json');
+}
+
+module.exports = conf;
