@@ -1,5 +1,6 @@
 {
     "API_URL": "http://localhost:3001",
+    "FRONT_URL": "http://localhost:8081",
     "OAUTH_BELL_COOKIE_PASSWORD": "3362f9d2-16fe-4abe-98ab-68ce2c1cfa39",
     "HMAC_KEY": "6e30ed41-0ee6-40fd-9d82-f901539b18e2",
     "REDIS_HOST": "localhost",

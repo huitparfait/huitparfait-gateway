@@ -6,6 +6,7 @@ const Good = require('good');
 const h2o2 = require('h2o2');
 const Hapi = require('hapi');
 const proxifyApiWithAuth = require('./routes/proxify-api-with-auth.route');
+const proxifyFront = require('./routes/proxify-front.route');
 const sessionCookieAuth = require('./session-cookie/session-cookie.auth');
 const socialAuth = require('./social-auth/social-auth.auth');
 
@@ -31,6 +32,7 @@ async function createServer () {
     sessionCookieAuth,
     h2o2,
     proxifyApiWithAuth,
+    proxifyFront,
     {
       plugin: Good,
       options: {

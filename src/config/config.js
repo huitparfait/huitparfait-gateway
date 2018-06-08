@@ -22,6 +22,13 @@ const conf = convict({
     default: null,
     env: 'API_URL',
   },
+  FRONT_URL: {
+    doc: 'The URL of the frontend to proxify',
+    format: String,
+    required: true,
+    default: null,
+    env: 'FRONT_URL',
+  },
   OAUTH_BELL_COOKIE_PASSWORD: {
     doc: 'Password used by bell (and iron) to encrypt cookies during oAuth dance',
     format: String,
