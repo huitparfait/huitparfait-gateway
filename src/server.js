@@ -5,6 +5,7 @@ const forceHttps = require('hapi-require-https');
 const Good = require('good');
 const h2o2 = require('h2o2');
 const Hapi = require('hapi');
+const prefixWww = require('./prefix-www');
 const proxifyApiWithAuth = require('./routes/proxify-api-with-auth.route');
 const proxifyFront = require('./routes/proxify-front.route');
 const sessionCookieAuth = require('./session-cookie/session-cookie.auth');
@@ -56,7 +57,10 @@ async function createServer () {
     },
   ]);
   if (isProduction) {
-    await server.register(forceHttps);
+    await server.register([
+      forceHttps,
+      prefixWww,
+    ]);
   }
   return server;
 };
