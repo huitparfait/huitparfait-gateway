@@ -5,10 +5,10 @@ const jwt = require('jsonwebtoken');
 
 const JWT_PRIVATE_KEY = config.get('JWT_PRIVATE_KEY');
 
-function getJwtBearerHeader (payload) {
+function getJwtBearerHeader (payload, expiresInSeconds = 10) {
   const token = jwt.sign(payload, JWT_PRIVATE_KEY, {
     algorithm: 'RS512',
-    expiresIn: 10,
+    expiresIn: expiresInSeconds,
   });
   return `Bearer ${token}`;
 }
