@@ -29,6 +29,7 @@
     "hapi": "17.5.0",
     "hapi-require-https": "3.0.0",
     "jsonwebtoken": "8.2.2",
+    "prompt": "1.0.0",
     "redis": "2.8.0",
     "superagent": "3.8.3",
     "uuid": "3.2.1"
