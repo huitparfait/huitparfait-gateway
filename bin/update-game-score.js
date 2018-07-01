@@ -28,11 +28,22 @@ request
 
     for (const g of games) {
 
-      const gameData = await asyncPrompt([
+      const regularGameData = await asyncPrompt([
         promptNumber('goalsTeamA', `${g.gameName} : ${g.nameTeamA}`, g.goalsTeamA),
         promptNumber('goalsTeamB', `${g.gameName} : ${g.nameTeamB}`, g.goalsTeamB),
         promptBoolean('riskHappened', `${g.gameName} : ${g.riskTitle} ?`, g.riskHappened),
       ]);
+
+      let shootoutGameData = {};
+      const wentToShootout = (g.phase !== 'Groupes' && regularGameData.goalsTeamA === regularGameData.goalsTeamB)
+      if (wentToShootout) {
+        shootoutGameData = await asyncPrompt([
+          promptNumber('penaltiesTeamA', `${g.gameName} : ${g.nameTeamA} (penalties)`, g.penaltiesTeamA),
+          promptNumber('penaltiesTeamB', `${g.gameName} : ${g.nameTeamB} (penalties)`, g.penaltiesTeamB),
+        ]);
+      }
+
+      const gameData = { ...regularGameData, ...shootoutGameData };
 
       const { confirmUpdate } = await asyncPrompt([
         promptBoolean('confirmUpdate', `Update ${g.gameName} with ${JSON.stringify(gameData)}`, true),
